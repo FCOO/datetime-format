@@ -8,8 +8,7 @@ Format for Moment-object with different timezones
 `bower install https://github.com/NielsHolt/datetime-format.git --save`
 
 ## Demo
-
-http(s)://<username>.github.io/<projectname>.
+http://NielsHolt.github.io/datetime-format/examples/
 
 ## Usage
 ```var myDateTimeFormat = new DateTimeFormat( options );```
