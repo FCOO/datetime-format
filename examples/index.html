@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>datetime-format - Example</title>
+	<meta charset="iso-8859-1" />
+
+	<style>
+		body { font-family: arial; }
+		td { text-align:center; padding: 3px; }
+		tr:first-child {background-color: lightblue;}
+	</style>
+</head>
+
+<body>
+
+	<script src="jquery.js"></script>
+	<script src="moment.js"></script>
+	<script src="moment-timezone-with-data.js"></script>
+	<script src="../src/datetime-format.js"></script>
+
+	<script>
+		var myDateTimeFormat = new DateTimeFormat({
+			format: 'YMD',
+			timeFormat: '24',	
+			timezones: [
+				{id:'Asia/Tokyo',						name:'Asia/Tokyo'}, 
+				{id:'America/Los_Angeles',	name:'America/LA'}
+			]
+
+		});
+		var m = moment();
+		document.write('<h1>Different timezones</h1><table border=1><tr><td>Timezone</td><td>.datetimeAsString(..)</td></tr>');
+		for (var i=0; i<myDateTimeFormat.timezones.length; i++ ){
+			var timezone = myDateTimeFormat.timezones[i];
+			document.write('<tr><td>'+timezone.fullName + '</td><td>' + myDateTimeFormat.datetimeAsString( m, {timezoneId: timezone.id})+'</td></tr>');
+		}		
+		document.write('</table>');
+		
+		document.write('<h1>Different formatId</h1><table border=1><tr><td>formatId</td><td>.dateAsString(..)</td></tr>');
+		for (var i=0; i<=myDateTimeFormat.maxFormatId; i++ ){
+			document.write('<tr><td>' + i + '</td><td>' + myDateTimeFormat.dateAsString( m, {formatId: i})+'</td></tr>');
+		}		
+		document.write('</table>');
+
+
+	</script>
+</body>
+</html>

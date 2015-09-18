@@ -1,0 +1,32 @@
+{
+  "name": "datetime-format",
+  "version": "0.0.0",
+  "homepage": "https://github.com/NielsHolt/datetime-format",
+  "authors": [
+    "Niels Holt <niels@steenbuchholt.dk>"
+  ],
+  "description": "Description from README.md",
+  "main": [
+    "dist/datetime-format.min.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/NielsHolt/datetime-format.git"
+  },
+  "dependencies": {
+    "jquery": "latest",
+    "moment": "latest",
+    "moment-timezone": "latest"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "moduleType": [
+    "es6"
+  ]
+}
