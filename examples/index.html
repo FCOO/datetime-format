@@ -20,8 +20,8 @@
 
 	<script>
 		var myDateTimeFormat = new DateTimeFormat({
-			format: 'DMY',
-			timeFormat: '24',	
+			date: 'DMY',
+			time: '24',	
 			timezones: [
 				{id:'Asia/Tokyo',						name:'Asia/Tokyo'}, 
 				{id:'America/Los_Angeles',	name:'America/LA'}
@@ -32,13 +32,13 @@
 		document.write('<h1>Different timezones</h1><table border=1><tr><td>Timezone</td><td>.datetimeAsString(..)</td></tr>');
 		for (var i=0; i<myDateTimeFormat.timezones.length; i++ ){
 			var timezone = myDateTimeFormat.timezones[i];
-			document.write('<tr><td>'+timezone.fullName + '</td><td>' + myDateTimeFormat.datetimeAsString( m, {timezoneId: timezone.id})+'</td></tr>');
+			document.write('<tr><td>'+timezone.fullName + '</td><td>' + myDateTimeFormat.datetimeAsString( m, {timezone: timezone.id})+'</td></tr>');
 		}		
 		document.write('</table>');
 		
-		document.write('<h1>Different formatId</h1><table border=1><tr><td>formatId</td><td>.dateAsString(..)</td></tr>');
-		for (var i=0; i<=myDateTimeFormat.maxFormatId; i++ ){
-			document.write('<tr><td>' + i + '</td><td>' + myDateTimeFormat.dateAsString( m, {formatId: i})+'</td></tr>');
+		document.write('<h1>Different dateId</h1><table border=1><tr><td>dateId</td><td>.dateAsString(..)</td></tr>');
+		for (var i=0; i<=myDateTimeFormat.maxDateId; i++ ){
+			document.write('<tr><td>' + i + '</td><td>' + myDateTimeFormat.dateAsString( m, {dateId: i})+'</td></tr>');
 		}		
 		document.write('</table>');
 

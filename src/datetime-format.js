@@ -6,34 +6,27 @@
 	https://github.com/NielsHolt/datetime-format
 	https://github.com/NielsHolt
 
-format: 'DMY', 'MDY', 'YMD'
-formatId: integer : 0-5
-timeFormat: '12', '24'
-localAsString: 'local'
-hourAbbr: 'h'
-timezones: [] of {id, name, momentTzId}
-timezoneId
+date					: 'DMY', 'MDY', 'YMD'
+dateId				: integer : 0-7
+time					: '12', '24'
+localAsString	: 'local'
+hourAbbr			: 'h'
+timezones			: [] of {id, name, momentTzId}
+timezone
 ****************************************************************************/
 
 ;(function ($, window, document, undefined) {
 	"use strict";
 
-	function tzMoment( m, timezone ) { 
-		if (timezone == 'local') return m.local();
-		if (timezone == 'utc') return m.utc();
-		return m.tz( timezone );
-	}
-
-
 	function DateTimeFormat( options ) {
+		options = options || {};
 		this.options = $.extend({
-			format				: 'DMY',
-			formatId			: 2,
-			timeFormat		: '24',
-			timezoneId		: 'local',
+			date					: 'DMY',
+			dateId				: 2,
+			time					: '24',
+			timezone			: 'local',
 			localAsString	: 'local',
-			hourAbbr			: 'h',
-		}, options);
+		}, options );
 
 		//Different date-formats in a 3-dim array. eq. dateFormats[2][0] = 'DD. MMM YYYY'
 		this.dateFormats = [
@@ -46,7 +39,7 @@ timezoneId
 			['DD/MM/YYYY'					, 'MM/DD/YYYY'					, 'YYYY/MM/DD'				],	//24/12/2015								| 12/24/2015								| 2015/12/24
 			['DD/MM/YY'						, 'MM/DD/YY'						, 'YY/MM/DD'					]		//24/12/15									| 12/24/15									| 15/12/24
 		];
-		this.maxFormatId = this.dateFormats.length - 1;
+		this.maxDateId = this.dateFormats.length - 1;
 
 		//**********************************************************
 		this.addTimezone = function addTimezone(options){
@@ -78,23 +71,28 @@ timezoneId
 		this.setFormat = function setFormat( options ){
 			$.extend( this.options, options ); 
 
-			var formatIndex = ['DMY', 'MDY', 'YMD'].indexOf(this.options.format);
-			this.options.formatId = Math.max(0, Math.min(this.options.formatId, this.maxFormatId));
-			this.formatString = this.dateFormats[this.options.formatId][formatIndex];
+			var formatIndex = ['DMY', 'MDY', 'YMD'].indexOf(this.options.date);
+			this.options.dateId = Math.max(0, Math.min(this.options.dateId, this.maxDateId));
+			this.formatString = this.dateFormats[this.options.dateId][formatIndex];
 
 			this.timezone = this.timezones[0];
 			for (var i=0; i<this.timezones.length; i++ )
-				if (this.timezones[i].id == this.options.timezoneId){
+				if (this.timezones[i].id == this.options.timezone){
 					this.timezone = this.timezones[i];
 					break;
 				}
 			this.momentTzId = this.timezone.momentTzId;
 
-			this.timeFormat = this.options.timeFormat == '24' ? 'HH:mm' : 'hh:mma';
+			this.timeFormat = this.options.time == '24' ? 'HH:mm' : 'hh:mma';
 		}
 		this.setFormat( this.options );
 
 		//**********************************************************
+		this.tzMoment = function( m, timezone ) { 
+			if (timezone == 'local') return m.local();
+			if (timezone == 'utc') return m.utc();
+			return m.tz( timezone );
+		}
 
 		this.dateAsString			= function( moment, options ){ return this._asString( moment, false, options );  }
 		this.datetimeAsString	= function( moment, options ){ return this._asString( moment, true, options );  }
@@ -105,7 +103,7 @@ timezoneId
 			this.setFormat( options );
 			var formatStr = this.formatString + (inclTime ? ' ' + this.timeFormat : '');
 					
-			var result = tzMoment( moment, this.momentTzId ).format( formatStr );
+			var result = this.tzMoment( moment, this.momentTzId ).format( formatStr );
 
 			this.options = $.extend({}, saveOptions );		
 			return result;
