@@ -1,6 +1,6 @@
 {
   "name": "datetime-format",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "package.json is only use for building the package. see bower.json for more info",
   "main": "dist/datetime-format.min.js",
   "author": "Niels Holt nho@fcoo.dk",
