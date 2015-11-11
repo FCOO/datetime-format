@@ -356,7 +356,7 @@ module.exports = function(grunt) {
 				additionalFiles	: ['package.json'],
 
 				add			: true, 
-				addFiles: ['.'],
+				addFiles: ['-A'],
 
 				commit	: true, 
 				push		: true,			
