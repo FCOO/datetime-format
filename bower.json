@@ -1,17 +1,17 @@
 {
   "name": "datetime-format",
-  "version": "1.0.0",
-  "homepage": "https://github.com/NielsHolt/datetime-format",
+  "version": "1.0.1",
+  "homepage": "https://github.com/fcoo/datetime-format",
   "authors": [
-    "Niels Holt <niels@steenbuchholt.dk>"
+    "Niels Holt nho@fcoo.dk"
   ],
-  "description": "Description from README.md",
+  "description": "Format for Moment-object with different timezones",
   "main": [
     "dist/datetime-format.min.js"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/NielsHolt/datetime-format.git"
+    "url": "git://github.com/fcoo/datetime-format.git"
   },
   "dependencies": {
     "jquery": "latest",

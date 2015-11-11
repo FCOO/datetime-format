@@ -5,10 +5,10 @@ Format for Moment-object with different timezones
 
 ## Installation
 ### bower
-`bower install https://github.com/NielsHolt/datetime-format.git --save`
+`bower install https://github.com/fcoo/datetime-format.git --save`
 
 ## Demo
-http://NielsHolt.github.io/datetime-format/examples/
+http://fcoo.github.io/datetime-format/demo/
 
 ## Usage
 ```var myDateTimeFormat = new DateTimeFormat( options );```
@@ -69,16 +69,17 @@ http://NielsHolt.github.io/datetime-format/examples/
 </table>
 
 #### dateId
-0: Monday, 24. December 2015
-1: Mon, 24. December 2015
-2: Mon, 24. Dec 2015
-3: Mon, 24. Dec 15
-4: 24. Dec 2015
-5: 24. Dec 15
-6: 24/12/2015
-7: 24/12/15
+dateId: example (for `date="DMY"`) 
+- 0: `Monday, 24. December 2015`
+- 1: `Mon, 24. December 2015`
+- 2: `Mon, 24. Dec 2015`
+- 3: `Mon, 24. Dec 15`
+- 4: `24. Dec 2015`
+- 5: `24. Dec 15`
+- 6: `24/12/2015`
+- 7: `24/12/15`
 
-Only show for `date="DMY"`
+
 
 ### Methods
 
