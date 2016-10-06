@@ -1,5 +1,12 @@
 # datetime-format
 
+----------
+----------
+### THIS PACKAGE IS **DEPRECATED** AND WILL NOT BE UPDATED. USE [MOMENT-SIMPLE-FORMAT](https://github.com/FCOO/moment-simple-format) INSTEAD
+
+----------
+----------
+
 ## Description
 Format for Moment-object with different timezones
 
